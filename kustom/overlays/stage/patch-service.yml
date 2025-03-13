@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: my-app-service
   annotations:
-     environment: "prod"
+     environment: "staging"
      monitoring: "enabled"
 spec:
   type: ClusterIP
@@ -14,4 +14,4 @@ spec:
       targetPort: 8080
   selector:
     app: my-app
-    environment: prod
+    environment: staging

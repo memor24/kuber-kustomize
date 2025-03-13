@@ -7,7 +7,7 @@ bases:
 # setting image tag for dev:
 images:
 - name: my-app-image-dev
-  newName:  ghcr.io/memor24/kk-image
+  newName:  ghcr.io/memor24/kk-images
   newTag: v1.0.${BUILD_NUMBER} # v1.dev.counter
 
 patchesStrategicMerge:

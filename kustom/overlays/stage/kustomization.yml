@@ -8,4 +8,4 @@ bases:
 images:
 - name: my-app-image-prod
   newName:  ghcr.io/memor24/kuber-kustomize-gitops/my-app-image/
-  newTag: v1.2.${BUILD_NUMBER} # v1.prod.counter
+  newTag: v1.2.${BUILD_NUMBER} # v1.staging.counter
