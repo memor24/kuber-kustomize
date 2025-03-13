@@ -33,8 +33,8 @@ jobs:
       - name: build and push Docker image
         run: |
           docker build -t my-app:latest . 
-          docker tag my-app:latest ${{ env.Registry }}/${{ env.ImageRepo }}/my-app:${{ BUILD_NUMBER }} 
-          docker push ${{ env.Registry }}/${{ env.ImageRepo }}/my-app:${{ BUILD_NuMBER }}
+          docker tag my-app:latest ${{ env.Registry }}/${{ env.ImageRepo }}/my-app:${{ github.run_number }} 
+          docker push ${{ env.Registry }}/${{ env.ImageRepo }}/my-app:${{ github.run_number }}
 
       - name: install KinD
         run: |
@@ -77,14 +77,10 @@ jobs:
           echo "building & deploying to dev"
           envsub < overlays/dev/kustomization.yml > overlays/dev/kustomization-tmp.yml
           kustomize build overlays/dev -f overlays/dev/kustomization-tmp.yml | kubectl apply -f -
-          env: 
-            BUILD_NUMBER: ${{ github.run_number }}
 
       - name: build and deploy to staging
         run: |
           echo "building & deploying to the staging environment"
           envsub < overlays/stage/kustomization.yml > overlays/stage/kustomization-tmp.yml
           kustomize build overlays/stage -f overlays/stage/kustomization-tmp.yml| kubectl apply -f -
-          env: 
-            BUILD_NUMBER: ${{ github.run_number }}
         
