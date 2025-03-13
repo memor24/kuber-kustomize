@@ -12,8 +12,8 @@ FROM python:3.9-alpine
 
 COPY --from=builder /app/lib/python3.9/site-packages app/lib/python3.9/site-packages
 
-COPY src/myapp.py src/mytest.py .
+COPY src/myapp.py .
 
-EXPOSE 6666
+EXPOSE 8080
 
-CMD [ "gunicorn", "--bind", "0.0.0.0:6666", "myapp:app"]
+CMD [ "gunicorn", "--bind", "0.0.0.0:8080", "my-app:app"]
